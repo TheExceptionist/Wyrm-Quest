@@ -1,0 +1,111 @@
+Concepts:
+(T) if enough time
+-5 Standard Boss Types
+	Side-to-Side
+	Hovering
+	Static
+	(T)Pursue
+	(T)Jumping
+	
+-Any other bosses types will have to be manually coded
+
+-6 standard Enemy Types
+	Static Melee
+	Wandering Melee
+	(T)Tracking Melee
+	Static Ranged
+	Wandering Ranged
+	(T)Tracking Ranged
+	Static Flying 
+	Wandering Flying
+	(T)Tracking Flying
+(T)Dual Ai (entity that is both ranged and melee) 
+
+-Any other ai would have to created manually
+-(T)Bosses
+-Different Tiles:
+	Spiked
+	Grass
+	Dirt
+	Stone
+	Falling Blocks
+-Different Containers
+	Pots
+	Vases
+-Different Pickups:
+	(T)Items
+	Gold
+	Relics
+	Gems
+	//These vary and strength
+	Staff(M M)
+	Sword(P M)
+	Bow(P R)
+	Tome(M R)
+	Plate Armor(P R)
+	Mail Armor(P M)
+	Leather Armor(M M)
+	Robe Armor(M R)
+	
+item("Bow", attack type, damage)..
+armor("Mail", phys melee, mag melee, etc)..
+
+-4 Attack Types
+	Physical:
+		Melee
+		Ranged
+	Magicial:
+		Melee 
+		Ranged
+
+-Generic Entity Stats:
+	(L)(Can be change with level up) 3 points per level
+	(L)Health
+	Level
+	(L)Weapon Proficient(Mag and Phy Melee, Ranged)
+	(L)Defense Proficient(Mag and Phy Melee, Ranged)
+	Attack
+	Armor
+	(L)Speed
+	
+Example Entity:
+	level:1
+	health:10
+	Wp:5,0,0,0
+	Def:3,0,0,0
+	Attack:3
+	Armor:1
+	Speed:4
+	
+Example Player:
+	level:1
+	health:20
+	Wp:0,0,0,0
+	Def:0,0,0,0
+	Attack:2
+	Armor:1
+	Speed:2
+	
+	7.5
+Player Choice at beginning;
+	-Determines Starting Proficient, weapons, armor and other stats
+	Knight(P M)
+	Archer(P R)
+	Mage(M M)
+	Priest(M R)
+Vocation Class can be used to defined starting items and other stats these are just the 4 pre-coded ones
+new Vocation("Knight', health bonus, wp bonus, def bopnu, attack bonus, armour bonus, speed bonus, item, armor)
+####    MATH
+
+-Damage Algorithm
+	//Assuming the attack is Phys Melee
+	&health -= Round(_Attack * (_Wp(0)/2)) - Round(&Armor + (&Armor * (&Def(0)/10)))  
+
+-Speed Algorithm
+	velX + round(speed/2)	
+
+Simple Leveling:
+	level * 10 = xp needed
+	
+Xp gain
+	xpCurrent += round(level/2) * xpGiven 
